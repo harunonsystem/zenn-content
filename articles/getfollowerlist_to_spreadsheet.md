@@ -2,7 +2,7 @@
 title: "GASでTwitterフォロワーリストを取得したい"
 emoji: "👹"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["api", "googleappscrip", "googlespreadshe"]
+topics: ["api", "googleappsscrip", "googlespreadshe"]
 published: true
 ---
 # これは何

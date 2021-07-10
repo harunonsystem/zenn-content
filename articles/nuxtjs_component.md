@@ -1,36 +1,71 @@
 ---
-title: "Nuxt.jsで使うコンポーネントのあれこれ"
+title: "Nuxt.jsで覚える初めてのコンポーネント"
 emoji: "🦁"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["nuxtjs", "javascript", "vue"]
 published: false
 ---
 
-Nuxt.jsを仕事で使っています。
-`pages/` にベタ書きしてたら色々しんどくなった、けどコンポーネントの使い方（何をどこまでやったらいいのかわからん）になったので備忘録程度にまとめていきます。
+Nuxt.jsを業務で使っています。
+正直今まで`pages/` にベタ書きしてました。しかしコンポーネント作って共通化、朝令暮改で起こりまくる仕様変更に対応できるようにコンポーネントは必須でした。
 `props` がなにかもわからず、コピペして動いてるけどまともに使えなくて泣いているところからスタートしました。
+そういう初学者の備忘録です。🥲
 
-1. まずコンポーネントを作って親で読み込んでみる
+# まずコンポーネントを作って親で読み込む
 
-```javascript
+## 最初にシンプルなHTMLを作る
+```javascript: sample.vue
 <template>
-    <h1>title</h1>
+    <h1>たいとる</h1>
 </template>
 ```
-だから何だと言われそうですがまぁこういうのがあったとして。
-普通にアプリを作っていれば、タイトルは幾つかのページで使われ、その都度内容が変更されると思います。（HomeとかProfileとかBlogとか）
-ただの`ｈ1`で終わればいいですが、「タイトルのCSSは全部いっしょにしちゃってー」とか言われます。
+まず、シンプルなHTMLを作ってみます。
+ただの`h1`タグでタイトルを記述しているだけです。
 
-なので
+`たいとる` を直接HTMLに記述せず、変数として渡すこともできます。
+
+## たいとるを変数に
+```javascript: sample.vue
+<template>
+    <h1 class="title">{{ title }}</h1>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            title: 'たいとる',
+        }
+    }
+}
+</script>
+
+<style>
+    .title {
+        color: #333;
+        font-size: 1.5em;
+    }
+</style>
 ```
-pages/home.vue
-pages/profile.vue
-pages/blog.vue
+h1タグの中身を変更したい場合は、 `title` という変数を使って、 `{{ title }}` の部分を変更することができます。
+そこだけ変わってもあまり意味ないように思えますが、`title`だけを編集したい場合HTMLを編集せずに済みます。
+
+## 変数を親で読み込む
+
+先程までに作っていたファイルをコンポーネントとして読み込みます。
+```javascript
+├─ components
+│  └─ title.vue
+├─ pages
+│  └─ home.vue
+│  ├─ profile.vue
+│  └─ blog.vue
 ```
 で使われる `title.vue` というコンポーネントを作ってみます。
+home, profile, blog というページで使われることを想定しています。
 
-Parent ex)pages.home.vue
-```javascript
+Parent(home, profile, blog側)
+```javascript: parent.vue
 <template>
     <Title title="ホーム" />
 </template>
@@ -45,10 +80,10 @@ export default {
 </script>
 ```
 
-Child
-```javascript
+Child(title側)
+```javascript: child.vue
 <template>
-    <h1 class="default">{{ title }}</h1>
+    <h1 class="title">{{ title }}</h1>
 </template>
 
 <script>
@@ -56,40 +91,89 @@ export default {
     props: {
         title: {
             type: String,
-            default: '',
+            default: 'たいとる',
         }
     }
 }
 </script>
 
 <style>
-.default {
-    font-size: 12px;
-    color:red;
-}
+    .title {
+        color: #333;
+        font-size: 1.5em;
+    }
 </style>
 ```
 
 これで同じstyleを指定しつつ、親でタイトルを変更するだけで使い回せるコンポーネントが作れました🎉
 
-2. メソッドを実行する
-やっぱボタン作って実行したいじゃんね（唐突）
+先程 
+```javascript
+    data() {
+        return {
+            title: 'たいとる',
+        }
+    }
+```
+と記述しましたが、この部分をPropsで親から読み込みます。
+```javascript
+    props: {
+        title: {
+            type: String,
+            default: 'たいとる',
+        }
+    }
+```
 
+親コンポーネントから渡すことで、`title`変数をPageによって変更しつつ、子コンポーネントに渡すことができます。
+渡した変数以外の部分は子コンポーネントで共通化できています。
+
+親側で
+```javascript
+    <template>
+        <Child title="たいとる" />
+    </template>
+```
+にすれば、`title: 'たいとる',`になりますし、
+
+```javascript
+    <template>
+        <Child title="ホーム" />
+    </template>
+```
+にすれば、`title: 'ホーム',`になります。
+
+title変数以外は、子コンポーネントで共通化しているので読み込むすべての箇所で一緒になります。
+
+コンポーネント単位にもよりますが、タイトルを記述している箇所のHTML/CSS/JavsScriptを変更したいといった要望が来たときに子コンポーネントの`title.vue` を変更するだけでできます。
+一括置換などでミスの発生を防いだり、共通化することで管理しやすくなります。
+
+余談ですが、デザイン側でも共通化しておくことで管理しやすく、デザイナーエンジニア間でコミュニケーションが取りやすくなるかと思います。（大抵の自社開発では当たり前のようにやってそう🥺）
+
+
+propsのtype(型)にはStringの他に、Number, Boolean, Array, Object, Function, Date, Symbol が使えます。
+
+# メソッドを作成して親で読み込む
+
+コンポーネントといえばボタンみたいなイメージがあるので作ってみます。
 アプリ作ってれば保存、キャンセル、追加などボタンを複数作る場面があると思います。
-作ってみましょう。
 
-```vue
-//child component
+```vue: child.vue
 <template>
     <button @click="save(value)">{{ BtnText }}</button>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            value: 1,
+        }
+    },
     props: {
         BtnText: {
             type: String,
-            default: ''
+            default: null,
         },
     },
     methods: {
@@ -102,10 +186,9 @@ export default {
 ```
 さっきと同様、`BtnText`で親コンポーネントから名前を引き継げるようにしてます。
 
-```vue
-// parent component
+```vue: parent.vue
 <template>
-    <SaveBtn title="保存" @save="save()" />
+    <SaveBtn BtnText="保存" @save="save()" />
 </template>
 
 <script>
@@ -114,8 +197,9 @@ export default {
         SaveBtn,
     },
     methods: {
-        save() {
-            // わからんが何か保存するねん
+        save(value) {
+            // childのvalueを親に渡す
+            console.log(value)
         }
     }
 }
@@ -124,13 +208,10 @@ export default {
 
 `$emit`することで子コンポーネントのデータを親に引き継いでいます。
 
-Methodを親に持たせるべきか、子に持たせるべきかケースバイケースなのだろうがわからんので誰か教えて欲しい…
-pages 直下のmethodsに処理を書いてて、子コンポーネントではemitして値を受け渡していくのがベターなのかな。。
-
-3. `emit`で渡す値が複数ある場合
+## `emit`で渡す値が複数ある場合
 参考） https://qiita.com/kambe0331/items/f17a54027cdfad99740c
-```vue
-//child
+
+```vue: child.vue
 <template>
 <button @click="save()">{{ BtnText }}</button>
 </template>
@@ -140,7 +221,7 @@ export default {
     props: {
         BtnText: {
             type: String,
-            default: '',
+            default: null,
         },
     },
     data() {
@@ -159,10 +240,9 @@ export default {
 ```
 
 
-```vue
-//parent
+```vue: parent.vue
 <template>
-    <SaveBtn title="保存" @click="save()" />
+    <SaveBtn BtnText="保存" @click="save()" />
 </template>
 
 <script>
@@ -179,5 +259,4 @@ export default {
 }
 </script>
 ```
-value はArrayで取得できます。
-各自適当に使っていけます。
+child componentから渡される値が複数の場合、`value`は配列で渡されます。

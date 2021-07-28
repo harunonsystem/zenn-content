@@ -1,12 +1,12 @@
 ---
-title: "Vuetifyのv-cardでFooterを固定させてスクロールする方法"
+title: "v-dialogでv-cardを開いたときにFooterを固定させてスクロールする方法"
 emoji: "🐡"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ['nuxtjs', 'vuetify']
 published: true
 ---
 
-VuetifyのDialogを使ってv-cardを表示させるときにFooterを画面内に固定させる方法を備忘録程度に。
+VuetifyのDialogを使ってv-cardを表示させたときにFooterを画面内に固定させる方法を備忘録程度に。
 
 ## 完成形
 せっかちめな人はこちらを参考に。

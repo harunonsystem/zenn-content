@@ -24,7 +24,7 @@ published_at: 2022-12-05
 
 Misskey に関してはMisskey.io が一番有名かもしれませんが[インスタンス一覧]("https://join.misskey.page/ja-JP/instances") にあるインスタンスであれば大丈夫と思われます。
 
-## IFTTTでアプレットを作成する
+# IFTTTでアプレットを作成する
 
 IFTTT にログインして、アプレットを作成します。
 
@@ -34,7 +34,7 @@ IFTTT にログインして、アプレットを作成します。
 
 画面中央の「If This」と 「Then That」をクリックして、それぞれ以下のように設定します。
 
-### If This
+## If This
 
 If Thisをクリックすると、以下のような画面になります。
 ![](https://storage.googleapis.com/zenn-user-upload/057916206a5b-20221201.png)
@@ -82,7 +82,7 @@ APIを選択します。
 IFTTTで使うので忘れないようにしてください。
 ![](https://storage.googleapis.com/zenn-user-upload/2a72a1c924bb-20221201.png)
 
-### Then That
+## Then That
 
 Then Thatをクリックすると、以下のような画面になります。
 ![](https://storage.googleapis.com/zenn-user-upload/057916206a5b-20221201.png)
@@ -149,17 +149,17 @@ Then Thatで、Spotifyの曲名やアーティスト名をMisskeyに投稿する
 投稿されます🎉
 ![](https://storage.googleapis.com/zenn-user-upload/e3bae91b8432-20221201.png)
 
-#### 聖地巡礼
+### 聖地巡礼
 https://misskey.io/notes/98711k94oa
 
-## まとめ
+# まとめ
 IFTTTでWebhookを使うとMisskeyに自動投稿できるので、個人でも色々試せると思います。
 IFTTTとWebhookのやり方さえわかれば、他のサービスとの連携もできると思います。
 
 今回、滑り込みの初アドカレ初Misskey関連投稿でしたが、なんとか無事に終わりました。
 今後もWebhook使えば色々できそうなので空いた時間でやるかもしれません。そのときはまたお会いしましょう。
 
-## 参考
+# 参考
 https://qiita.com/hir-osechi/items/5e61b7701a98f5084772
 https://zenn.dev/meziro/articles/f584843818f150#%E3%83%8E%E3%83%BC%E3%83%88%E3%82%92%E6%8A%95%E7%A8%BF%E3%81%99%E3%82%8B
 https://misskey-hub.net/docs/api/endpoints/notes/create.html

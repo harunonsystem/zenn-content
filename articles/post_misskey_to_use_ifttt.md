@@ -7,7 +7,7 @@ published: true
 published_at: 2022-12-05 
 ---
 :::message
-この記事は、[Misskeyアドベントカレンダー]("https://adventar.org/calendars/7354") の5日目の記事です。
+この記事は、[Misskeyアドベントカレンダー](https://adventar.org/calendars/7354) の5日目の記事です。
 :::
 
 # これは何
@@ -18,17 +18,17 @@ published_at: 2022-12-05
 
 ## アカウントを作成しておくもの
 すべてアカウント作成が済んでいれば、ここはスキップしてしまっても大丈夫です。
-  - [Spotify]("https://www.spotify.com/jp/")
-  - [Misskey]("https://misskey.io/")
-  - [IFTTT]("https://ifttt.com/")
+  - [Spotify](https://www.spotify.com/jp/)
+  - [Misskey](https://misskey.io/)
+  - [IFTTT](https://ifttt.com/)
 
-Misskey に関してはMisskey.io が一番有名かもしれませんが[インスタンス一覧]("https://join.misskey.page/ja-JP/instances") にあるインスタンスであれば大丈夫と思われます。
+Misskey に関してはMisskey.io が一番有名かもしれませんが[インスタンス一覧](https://join.misskey.page/ja-JP/instances) にあるインスタンスであれば大丈夫と思われます。
 
 # IFTTTでアプレットを作成する
 
 IFTTT にログインして、アプレットを作成します。
 
-[新規アプレットの作成]("https://ifttt.com/create")をクリックすると以下のような画面になります。
+[新規アプレットの作成](https://ifttt.com/create)をクリックすると以下のような画面になります。
 
 ![](https://storage.googleapis.com/zenn-user-upload/7f3339721e06-20221201.png)
 
@@ -101,7 +101,7 @@ Then Thatをクリックすると、以下のような画面になります。
 
 `URL`には、Misskeyの投稿用APIを指定します。
 Misskeyの投稿用APIは、インスタンスのURLに/api/notes/create を付けたものになります。
-例えば、Misskey.ioの場合は、https://misskey.io/api/notes/create となります。
+例えば、Misskey.ioの場合は、`https://misskey.io/api/notes/create` となります。
 
 `Method`は、POSTにします。
 

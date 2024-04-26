@@ -3,7 +3,7 @@ title: "iPhoneのショートカットでバッテリー残量が減ってきた
 emoji: "🎃"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["iphone", "iphoneオートメーション"]
-published: false
+published: true
 ---
 
 # これは何

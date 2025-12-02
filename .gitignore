@@ -2,4 +2,7 @@ node_modules
 .DS_Store
 .idea
 
+# Lock files
+package-lock.json
+
 .claude/*local.*

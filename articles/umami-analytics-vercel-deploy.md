@@ -3,11 +3,8 @@ title: "Umami AnalyticsをVercelでデプロイして使う方法"
 emoji: "📈"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["analytics", "umami", "vercel", "seo"]
-published: false
+published: true
 ---
-:::message
-この記事は8割LLMで書きました。
-:::
 
 # Umamiとは
 
@@ -56,7 +53,7 @@ Vercelにログインし、「Add New...」→「Project」から先ほどフォ
 
 Vercelのダッシュボードから「Storage」→「Create Database」→「Postgres」を選択してデータベースを作成します。
 
-![](https://storage.googleapis.com/zenn-user-upload/2d272fed4b89-20251201.png)
+![](https://storage.googleapis.com/zenn-user-upload/5392295b3883-20251202.png)
 
 Neonを選んでいます。
 

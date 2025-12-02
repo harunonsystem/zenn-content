@@ -4,6 +4,5 @@ node_modules
 
 # Lock files
 package-lock.json
-bun.lock
 
 .claude/*local.*

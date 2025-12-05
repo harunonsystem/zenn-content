@@ -3,7 +3,7 @@ title: "github-readme-statsを自分用にForkしてVercel連携して使う方�
 emoji: "👾"
 type: "tech"
 topics: ["github", "vercel", "readme", "cloudflare"]
-published: false
+published: true
 ---
 
 github-readme-stats、こういうやつです。

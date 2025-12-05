@@ -3,12 +3,22 @@
   "filters": {},
   "rules": {
     "preset-ja-technical-writing": {
+      "sentence-length": {"max": 120},
       "ja-no-mixed-period": {
         "allowPeriodMarks": [":"]
       },
-      "no-exclamation-question-mark": {
-        "allowHalfWidthExclamation": true
+      "no-exclamation-question-mark": false
+    },
+    "preset-ja-spacing": {
+      "ja-space-between-half-and-full-width": {
+        "space": "always"
       }
+    },
+    "@textlint-ja/no-synonyms": true,
+    "textlint-rule-aws-service-name": {},
+    "@textlint-ja/textlint-rule-preset-ai-writing": true,
+    "prh": {
+      "rulePaths": ["./prh-rules.yml"]
     }
   }
 }

@@ -9,3 +9,5 @@ package-lock.json
 
 #wip
 .github/workflows/reviewdog.yml
+
+.opencode/
